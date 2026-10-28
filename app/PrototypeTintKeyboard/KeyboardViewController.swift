@@ -40,6 +40,7 @@ final class KeyboardViewController: UIInputViewController {
         rows.addArrangedSubview(stateLabel)
         rows.addArrangedSubview(row(["A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P"]))
         rows.addArrangedSubview(row(["Q", "S", "D", "F", "G", "H", "J", "K", "L", "M"]))
+        rows.addArrangedSubview(thirdRow())
         rows.addArrangedSubview(bottomRow())
         view.addSubview(rows)
 
@@ -108,16 +109,35 @@ final class KeyboardViewController: UIInputViewController {
         return stack
     }
 
+    // Row 3 of Apple's French (France) AZERTY: ⇧ W X C V B N ´ ⌫ (see research/french-keyboard-layout).
+    private func thirdRow() -> UIStackView {
+        let shift = key("⇧", action: nil)
+        let delete = key("⌫", action: #selector(deleteBackward))
+        let letters = row(["W", "X", "C", "V", "B", "N", "´"])
+        let stack = UIStackView(arrangedSubviews: [shift, letters, delete])
+        stack.spacing = 12
+        shift.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        delete.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        return stack
+    }
+
+    // Bottom row: 123 · espace · ⏎ like Apple's, with the prototype's Variant key added.
+    // The 🌐 key lives in iOS 26's own strip below the keyboard.
     private func bottomRow() -> UIStackView {
-        let globe = key("🌐", action: nil)
-        globe.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        let numbers = key("123", action: nil)
         let cycle = key("Variant ▶", action: #selector(nextVariant))
         let space = key("espace", action: #selector(insert(_:)))
-        let stack = UIStackView(arrangedSubviews: [globe, cycle, space])
+        let returnKey = key("⏎", action: nil)
+        let stack = UIStackView(arrangedSubviews: [numbers, cycle, space, returnKey])
         stack.spacing = 6
-        globe.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        numbers.widthAnchor.constraint(equalToConstant: 52).isActive = true
         cycle.widthAnchor.constraint(equalToConstant: 96).isActive = true
+        returnKey.widthAnchor.constraint(equalToConstant: 72).isActive = true
         return stack
+    }
+
+    @objc private func deleteBackward() {
+        textDocumentProxy.deleteBackward()
     }
 
     private func key(_ title: String, action: Selector?) -> UIButton {

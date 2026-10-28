@@ -1,0 +1,9 @@
+{
+  "name": "app",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build": "xcodebuild -project App.xcodeproj -scheme App -destination 'generic/platform=iOS Simulator' -derivedDataPath build build",
+    "simulator": "./scripts/run-simulator.sh"
+  }
+}

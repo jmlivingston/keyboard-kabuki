@@ -1,0 +1,14 @@
+{
+  "name": "keyboard-kabuki",
+  "private": true,
+  "workspaces": [
+    "web",
+    "app"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w web",
+    "build:web": "npm run build -w web",
+    "build:app": "npm run build -w app",
+    "simulator": "npm run simulator -w app"
+  }
+}

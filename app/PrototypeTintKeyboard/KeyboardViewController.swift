@@ -33,6 +33,7 @@ final class KeyboardViewController: UIInputViewController {
 
         stateLabel.font = .monospacedSystemFont(ofSize: 11, weight: .semibold)
         stateLabel.textAlignment = .center
+        stateLabel.numberOfLines = 0
 
         rows.axis = .vertical
         rows.spacing = 10
@@ -90,8 +91,21 @@ final class KeyboardViewController: UIInputViewController {
         case .tintedGlass:
             tintLayerView.backgroundColor = tint.withAlphaComponent(0.55)
         }
-        stateLabel.text = "\(variant.label)  ·  \(traitCollection.userInterfaceStyle == .dark ? "dark" : "light")"
+        // Overdraw also paints the hosting window, to test whether the grey band above the keys is ours.
+        view.window?.backgroundColor = variant == .overdraw ? tint : nil
+        stateLabel.text = "\(variant.label)  ·  \(traitCollection.userInterfaceStyle == .dark ? "dark" : "light")\n\(geometry)"
         layoutTint()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        apply()
+    }
+
+    private var geometry: String {
+        guard let window = view.window else { return "no window" }
+        let inWindow = view.convert(view.bounds, to: window)
+        return "view y\(Int(inWindow.minY)) h\(Int(inWindow.height)) · window h\(Int(window.bounds.height))"
     }
 
     private func layoutTint() {

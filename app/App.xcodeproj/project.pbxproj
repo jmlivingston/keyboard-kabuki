@@ -40,8 +40,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A10000000000000000000002 /* App */ = {isa = PBXFileSystemSynchronizedRootGroup; path = App; sourceTree = "<group>"; };
-		B10000000000000000000002 /* DiagnosticKeyboard */ = {isa = PBXFileSystemSynchronizedRootGroup; path = DiagnosticKeyboard; sourceTree = "<group>"; };
+		A10000000000000000000002 /* App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = App;
+			sourceTree = "<group>";
+		};
+		B10000000000000000000002 /* DiagnosticKeyboard */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DiagnosticKeyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,9 +238,10 @@
 		A1000000000000000000000E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8FRW62F82N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -253,9 +262,10 @@
 		A1000000000000000000000F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8FRW62F82N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -276,10 +286,11 @@
 		B1000000000000000000000E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "DiagnosticKeyboard.entitlements";
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = DiagnosticKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8FRW62F82N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DiagnosticKeyboard-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Kabuki Diagnostic";
@@ -300,10 +311,11 @@
 		B1000000000000000000000F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "DiagnosticKeyboard.entitlements";
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = DiagnosticKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8FRW62F82N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DiagnosticKeyboard-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Kabuki Diagnostic";
